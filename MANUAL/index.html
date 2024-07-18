@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Agregar estilos para los botones de flecha */
+        .swiper-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .swiper-slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navigation-buttons {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+
+        .navigation-buttons button {
+            background-color: #ffffff3b;
+            color: #000000;
+            border: none;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Agregar transición de color */
+        }
+
+        .navigation-buttons button:hover {
+            background-color: #00ffff; /* Cambiar a tu color azul neon al pasar el cursor */
+        }
+    </style>
+</head>
+<body>
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <!-- Agrega el atributo data-content-url con la URL de la página HTML -->
+            <div class="swiper-slide" data-content-url="HIMNO DEL COLEGIO">
+                <iframe width="100%" height="110%" src="PG1.html" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="swiper-slide" data-content-url="SECRETARIA DE EDUCACION DISTRITAL">
+                <iframe width="100%" height="100%" src="PG2.html" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="swiper-slide" data-content-url="MARCO LEGAL">
+                <iframe width="100%" height="100%" src="PG3.html" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="swiper-slide" data-content-url="Resolución No: 09">
+                <iframe width="100%" height="100%" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="swiper-slide" data-content-url="Contenido">
+                <iframe width="100%" height="100%" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="swiper-slide" data-content-url="INTRODUCCION">
+                <iframe width="100%" height="100%" src="PG6.html" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <!-- Agrega más slides según sea necesario -->
+        </div>
+
+        <!-- Botones de flecha para navegar -->
+        <div class="navigation-buttons">
+            <button onclick="goToPreviousPage()">&#60;</button>
+            <button class="next-button" onclick="goToNextPage()">&#62;</button>
+        </div>
+    </div>
+    
+    <audio id="pageChangeSound" src="utomp3.com - Sonido De transicion.mp3" preload="auto"></audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            loop: true,
+            coverflowEffect: {
+                depth: 500,
+                modifier: 1,
+                slideShadows: true,
+                rotate: 0,
+                stretch: 0,
+            },
+            on: {
+                slideChange: function () {
+                    var audio = document.getElementById("pageChangeSound");
+                    audio.play();
+                },
+            },
+        });
+
+        // Función para ir a la página anterior
+        function goToPreviousPage() {
+            swiper.slidePrev();
+        }
+
+        // Función para ir a la página siguiente
+        function goToNextPage() {
+            swiper.slideNext();
+        }
+    </script>
+</body>
+</html>
